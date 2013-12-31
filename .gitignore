@@ -1,0 +1,22 @@
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+.vagrant
+.env
+
+templates/ssh/authorized_keys
+templates/ssh/known_hosts
+templates/ssh/lift_github_rsa
+templates/ssh/lift_github_rsa.pub
+templates/blimp.env

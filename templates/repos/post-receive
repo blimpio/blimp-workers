@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+echo '
+=== Worker post-receive hook ===
+'
+
+echo '
+-----> Doing some git magic
+'
+# The actual update
+GIT_WORK_TREE=/home/ubuntu/apps/lift/ git checkout -f
+echo 'Done'
+
+echo '
+-----> Updating Requirements
+'
+source ~/.virtualenvs/lift/bin/activate
+pip install -r /home/ubuntu/apps/lift/requirements.txt
+
+echo '
+-----> Setting permissions of hook.log
+'
+sudo chown ubuntu:ubuntu /home/ubuntu/.virtualenvs/hook.log
+
+
+echo '
+-----> Restarting Worker
+'
+sudo supervisorctl restart LiftCeleryWorker
+sudo supervisorctl restart Beat
+sudo supervisorctl restart Celerycam
