@@ -9,19 +9,11 @@ echo '
 '
 # The actual update
 GIT_WORK_TREE=/home/ubuntu/apps/lift/ git checkout -f
-echo 'Done'
 
 echo '
 -----> Updating Requirements
 '
-source ~/.virtualenvs/lift/bin/activate
-pip install -r /home/ubuntu/apps/lift/requirements.txt
-
-echo '
------> Setting permissions of hook.log
-'
-sudo chown ubuntu:ubuntu /home/ubuntu/.virtualenvs/hook.log
-
+sudo su -c "source /home/ubuntu/.virtualenvs/lift/bin/activate; pip install -r /home/ubuntu/apps/lift/requirements.txt" -s /bin/bash ubuntu
 
 echo '
 -----> Restarting Worker
