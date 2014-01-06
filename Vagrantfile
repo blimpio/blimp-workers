@@ -17,6 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provider :virtualbox do |provider, override|
     override.vm.box = "precise64"
     override.vm.box_url ="http://files.vagrantup.com/precise64.box"
+    override.vm.network "forwarded_port", guest: 11211, host: 11212
   end
 
   config.vm.provider :digital_ocean do |provider, override|
@@ -36,6 +37,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision "shell",
     path: "https://gist.github.com/jpadilla/c53aeb16c9d540aa545f/raw/provision.sh",
-    args: [ENV['REDIS_SERVER_PASSWORD']]
+    args: [ENV['MEMCACHE_USERNAME'], ENV['MEMCACHE_PASSWORD'], ENV['REDIS_SERVER_PASSWORD']]
 
 end
