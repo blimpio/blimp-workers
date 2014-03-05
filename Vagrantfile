@@ -1,23 +1,23 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# Vagrantfile API/syntax version.
-VAGRANTFILE_API_VERSION = "2"
-
 # Set up environment from .env file
 File.readlines(".env").each do |line|
   values = line.split("=")
   ENV[values[0].strip.gsub(/"/, '')] = values[1].strip.gsub(/"/, '')
 end
 
-Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+# Vagrantfile API/syntax version.
+VAGRANTFILE_API_VERSION = "2"
 
-  config.vm.hostname = "blimp"
+# Provision script URL
+PROVISION_URL = "https://gist.github.com/jpadilla/c53aeb16c9d540aa545f/raw/provision.sh"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provider :virtualbox do |provider, override|
     override.vm.box = "precise64"
     override.vm.box_url ="http://files.vagrantup.com/precise64.box"
-    override.vm.network "forwarded_port", guest: 11211, host: 11212
   end
 
   config.vm.provider :digital_ocean do |provider, override|
@@ -35,8 +35,40 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     provider.region = "New York 2"
   end
 
-  config.vm.provision "shell",
-    path: "https://gist.github.com/jpadilla/c53aeb16c9d540aa545f/raw/provision.sh",
-    args: [ENV['MEMCACHE_USERNAME'], ENV['MEMCACHE_PASSWORD'], ENV['REDIS_SERVER_PASSWORD']]
+  config.vm.define "staging" do |staging|
+    staging.vm.hostname = "blimp-worker-staging"
+
+    # Environment specific provisioning args
+    config.vm.provision "shell",
+      path: PROVISION_URL,
+      args: [
+        ENV['MEMCACHE_USERNAME'],
+        ENV['MEMCACHE_PASSWORD'],
+        ENV['MEMCACHE_SERVER_PORT'],
+        ENV['REDIS_SERVER_PASSWORD'],
+        ENV['REDIS_SERVER_PORT'],
+        ENV['STAGING_DATABASE_URL'],
+        'STAGING',
+        'blimp-staging'
+      ]
+  end
+
+  config.vm.define "production" do |production|
+    production.vm.hostname = "blimp-worker-production"
+
+    # Environment specific provisioning args
+    config.vm.provision "shell",
+      path: PROVISION_URL,
+      args: [
+        ENV['MEMCACHE_USERNAME'],
+        ENV['MEMCACHE_PASSWORD'],
+        ENV['MEMCACHE_SERVER_PORT'],
+        ENV['REDIS_SERVER_PASSWORD'],
+        ENV['REDIS_SERVER_PORT'],
+        ENV['PRODUCTION_DATABASE_URL'],
+        'PRODUCTION',
+        'blimp'
+      ]
+  end
 
 end
