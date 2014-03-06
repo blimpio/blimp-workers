@@ -1,5 +1,5 @@
 # Blimp Workers
-Blimp workers using Vagrant with VirtualBox and Digital Ocean providers.
+Blimp workers using Vagrant with VirtualBox and Digital Ocean providers. This is an experimental setup not currently in our production environments.
 
 ## Plugins
 This makes use of two Vagrant plugins which can be installed by doing:
