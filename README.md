@@ -15,8 +15,6 @@ You also need to copy the following ignored files into your templates folder.
 
 - templates/ssh/authorized_keys
 - templates/ssh/known_hosts
-- templates/ssh/lift_github_rsa
-- templates/ssh/lift_github_rsa.pub
 - templates/blimp.env
 
 ## Local provision
