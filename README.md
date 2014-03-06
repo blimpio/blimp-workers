@@ -6,7 +6,6 @@ This makes use of two Vagrant plugins which can be installed by doing:
 
 ```
 vagrant plugin install vagrant-digitalocean
-vagrant plugin install vagrant-vbguest
 ```
 
 ## Setup
@@ -22,12 +21,12 @@ You also need to copy the following ignored files into your templates folder.
 
 ## Local provision
 ```
-vagrant up
-vagrant ssh -- -l ubuntu
+vagrant up staging
+vagrant ssh staging -- -l ubuntu
 ```
 
 ## Digital Ocean provision
 ```
-vagrant up --provider=digital_ocean
-vagrant ssh -- -l ubuntu
+vagrant up staging --provider=digital_ocean
+vagrant ssh staging -- -l ubuntu
 ```
