@@ -19,6 +19,7 @@ def run():
     file_name = os.path.basename(urlparse.urlparse(latest_backup_url).path)
     backup_path = '{}/{}'.format(backups_directory, file_name)
 
+    pyrax.settings.set('identity_type', 'rackspace')
     pyrax.set_credentials(rackspace_username, rackspace_api_key)
     cf = pyrax.cloudfiles
 
