@@ -11,7 +11,7 @@ end
 VAGRANTFILE_API_VERSION = "2"
 
 # Provision script URL
-PROVISION_URL = "https://gist.github.com/jpadilla/c53aeb16c9d540aa545f/raw/provision.sh"
+PROVISION_URL = "https://raw.github.com/GetBlimp/blimp-workers/master/provisioning/provision.sh"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
