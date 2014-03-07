@@ -36,6 +36,9 @@ sudo sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config
 # Disallow password authentication
 sudo sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config
 
+# restart ssh
+sudo service ssh restart
+
 # Adjust APT update intervals
 sudo cat > /etc/apt/apt.conf.d/10periodic << EOF
 APT::Periodic::Update-Package-Lists "1";
