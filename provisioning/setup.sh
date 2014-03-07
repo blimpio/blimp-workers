@@ -30,9 +30,6 @@ sudo apt-get install -y fail2ban
 # Install unattended-upgrades
 sudo apt-get install -y unattended-upgrades
 
-# Set ssh port
-sudo sed -i "s/Port 22/Port $9/g" /etc/ssh/sshd_config
-
 # Disallow root SSH access
 sudo sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config
 

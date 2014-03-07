@@ -35,9 +35,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     provider.region = "New York 2"
   end
 
-  # Set ssh guest port
-  config.ssh.guest_port = ENV['SSH_PORT']
-
   config.vm.define "staging" do |staging|
     staging.vm.hostname = "blimp-worker-staging"
 
@@ -52,8 +49,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         ENV['REDIS_SERVER_PORT'],
         ENV['STAGING_DATABASE_URL'],
         'STAGING',
-        'blimp-staging',
-        ENV['SSH_PORT']
+        'blimp-staging'
       ]
   end
 
@@ -71,8 +67,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         ENV['REDIS_SERVER_PORT'],
         ENV['PRODUCTION_DATABASE_URL'],
         'PRODUCTION',
-        'blimp',
-        ENV['SSH_PORT']
+        'blimp'
       ]
   end
 
