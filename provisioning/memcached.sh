@@ -46,7 +46,7 @@ sudo echo "# Set this to no to disable memcached.\nENABLE_MEMCACHED=yes" >> /etc
 sudo cp /vagrant/templates/memcached/memcached.conf /etc/
 
 # Set port in memcached.conf
-sudo sed -i "s/-p 11211/-p $3" /etc/memcached.conf
+sudo sed -i "s/-p 11211/-p $3/g" /etc/memcached.conf
 
 # Fix memcached binary paths
 sudo sed -i 's/DAEMON=\/usr\/bin\/memcached/DAEMON=\/usr\/local\/bin\/memcached/g' /etc/init.d/memcached
