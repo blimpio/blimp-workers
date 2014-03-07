@@ -16,4 +16,4 @@ ufw allow 10514
 ufw allow 9360
 
 # enable firewall
-ufw enable
+ufw --force enable
