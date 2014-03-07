@@ -35,7 +35,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     provider.region = "New York 2"
   end
 
-  # Set ssh guest port
+  # Set ssh port
+  config.ssh.port = ENV['SSH_PORT']
   config.ssh.guest_port = ENV['SSH_PORT']
 
   config.vm.define "staging" do |staging|

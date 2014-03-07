@@ -10,7 +10,7 @@ set -x
 sudo apt-get install -y ufw
 
 # ssh
-ufw allow 22
+ufw allow $4
 
 # memcached
 ufw allow $1
