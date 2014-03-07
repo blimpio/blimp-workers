@@ -56,6 +56,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "production" do |production|
     production.vm.hostname = "blimp-worker-production"
 
+    config.vm.provider :digital_ocean do |provider|
+      provider.size = "1GB"
+    end
+
     # Environment specific provisioning args
     config.vm.provision "shell",
       path: PROVISION_URL,
