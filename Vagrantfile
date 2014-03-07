@@ -37,7 +37,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Set ssh port
   config.ssh.port = ENV['SSH_PORT']
-  config.ssh.guest_port = ENV['SSH_PORT']
 
   config.vm.define "staging" do |staging|
     staging.vm.hostname = "blimp-worker-staging"
