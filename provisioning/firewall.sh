@@ -7,7 +7,7 @@ set -e
 set -x
 
 # ssh
-ufw allow $3
+ufw allow 22
 
 # memcached
 ufw allow $1
