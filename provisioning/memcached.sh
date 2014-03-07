@@ -29,7 +29,7 @@ sudo adduser \
   --disabled-login \
   --ingroup memcache \
   --home /nonexistent \
-  --gecos "Memcached" \
+  --gecos 'Memcached' \
   --shell /bin/false \
   memcache  > /dev/null
 
@@ -40,7 +40,7 @@ sudo cp scripts/start-memcached /usr/share/memcached/scripts/
 sudo cp scripts/memcached-tool /usr/share/memcached/scripts/
 
 # Set memcached default script
-sudo echo "# Set this to no to disable memcached.\nENABLE_MEMCACHED=yes" >> /etc/default/memcached
+sudo echo '# Set this to no to disable memcached.\nENABLE_MEMCACHED=yes' >> /etc/default/memcached
 
 # Copy memcached.conf to /etc/
 sudo cp /vagrant/templates/memcached/memcached.conf /etc/
@@ -56,15 +56,15 @@ sudo sed -i 's/my $memcached = "\/usr\/bin\/memcached";/my $memcached = "\/usr\/
 sudo update-rc.d memcached defaults > /dev/null
 
 # Create sasl2 config path
-sudo mkdir "/etc/sasl2"
+sudo mkdir '/etc/sasl2'
 
 # Create memcached sasl2 config
-sudo echo "mech_list: PLAIN" >> /etc/sasl2/memcached.conf
-sudo echo "plainlog_level: 5" >> /etc/sasl2/memcached.conf
-sudo echo "sasldb_path: /etc/sasl2/sasldb2" >> /etc/sasl2/memcached.conf
+sudo echo 'mech_list: PLAIN' >> /etc/sasl2/memcached.conf
+sudo echo 'plainlog_level: 5' >> /etc/sasl2/memcached.conf
+sudo echo 'sasldb_path: /etc/sasl2/sasldb2' >> /etc/sasl2/memcached.conf
 
 # Set SASL for Memcached
-echo $2 | sudo saslpasswd2 -p -a memcached -c $1 -f "/etc/sasl2/sasldb2"
+echo $2 | sudo saslpasswd2 -p -a memcached -c $1 -f '/etc/sasl2/sasldb2'
 
 # Set saslauthd to run automatically on startup
 sudo sed -i 's/START=no/START=yes/g' /etc/default/saslauthd

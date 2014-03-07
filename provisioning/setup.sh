@@ -22,7 +22,7 @@ sudo apt-get install -y build-essential
 sudo useradd ubuntu --create-home --shell /bin/bash
 
 # Grant sudo access to new user with no password
-sudo echo "ubuntu  ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+sudo echo 'ubuntu  ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 # Install fail2ban
 sudo apt-get install -y fail2ban
