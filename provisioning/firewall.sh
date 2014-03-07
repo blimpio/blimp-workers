@@ -7,13 +7,13 @@ set -e
 set -x
 
 # ssh
-ufw allow 22
+ufw allow $3
 
 # memcached
-ufw allow 10514
+ufw allow $1
 
 # redis
-ufw allow 9360
+ufw allow $2
 
 # enable firewall
 ufw --force enable

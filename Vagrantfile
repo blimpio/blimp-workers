@@ -48,6 +48,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         ENV['REDIS_SERVER_PASSWORD'],
         ENV['REDIS_SERVER_PORT'],
         ENV['STAGING_DATABASE_URL'],
+        config.ssh.port,
         'STAGING',
         'blimp-staging'
       ]
@@ -66,6 +67,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         ENV['REDIS_SERVER_PASSWORD'],
         ENV['REDIS_SERVER_PORT'],
         ENV['PRODUCTION_DATABASE_URL'],
+        config.ssh.port,
         'PRODUCTION',
         'blimp'
       ]

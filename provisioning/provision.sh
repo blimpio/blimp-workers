@@ -16,8 +16,8 @@ wget -qO- https://raw.github.com/GetBlimp/blimp-workers/master/provisioning/setu
 wget -qO- https://raw.github.com/GetBlimp/blimp-workers/master/provisioning/memcached.sh | bash -s $1 $2 $3
 wget -qO- https://raw.github.com/GetBlimp/blimp-workers/master/provisioning/redis.sh | bash -s $4 $5
 wget -qO- https://raw.github.com/GetBlimp/blimp-workers/master/provisioning/python.sh | bash
-wget -qO- https://raw.github.com/GetBlimp/blimp-workers/master/provisioning/templates.sh | bash -s $1 $2 $3 $4 $5 $6 $7 $8
-wget -qO- https://raw.github.com/GetBlimp/blimp-workers/master/provisioning/firewall.sh | bash
+wget -qO- https://raw.github.com/GetBlimp/blimp-workers/master/provisioning/templates.sh
+wget -qO- https://raw.github.com/GetBlimp/blimp-workers/master/provisioning/firewall.sh | bash -s $3 $5 $7
 
 # Finished provisioning log
 echo "`date +%H:%M:%S` : Finished provision.sh" >> $LOGFILE

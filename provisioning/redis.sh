@@ -15,7 +15,7 @@ sudo apt-get install -y redis-server
 # Configure redis-server
 sudo mkdir /mnt/redis
 sudo chown redis:redis /mnt/redis
-sudo sed -i "s/port 6379/port 9360/g" /etc/redis/redis.conf
+sudo sed -i "s/port 6379/port $2/g" /etc/redis/redis.conf
 sudo sed -i 's/bind 127.0.0.1/# bind 127.0.0.1/g' /etc/redis/redis.conf
 sudo sed -i "s/# requirepass foobared/requirepass $1/g" /etc/redis/redis.conf
 sudo sed -i 's/dir \/var\/lib\/redis/dir \/mnt\/redis/g' /etc/redis/redis.conf
