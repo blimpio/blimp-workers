@@ -8,8 +8,8 @@ set -x
 
 # Install PostgreSQL
 sudo apt-get install -y postgresql
-sudo -u postgres createuser --superuser $USER
-sudo -u postgres createdb $USER
+sudo -u postgres createuser --superuser ubuntu
+sudo -u postgres createdb ubuntu
 
 # Install Heroku
 wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
