@@ -8,7 +8,7 @@ set -x
 
 cp /vagrant/templates/blimp.env /home/ubuntu/blimp.env
 
-cp /vagrant/templates/runinenv.sh /home/ubuntu/runinenv.sh
+cp /vagrant/templates/heroku.netrc /home/ubuntu/.netrc
 cp -R /vagrant/templates/backups /home/ubuntu/
 
 mkdir /home/ubuntu/.ssh

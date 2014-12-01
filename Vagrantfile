@@ -24,15 +24,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     override.vm.box = "digital_ocean"
     override.vm.box_url = "https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box"
 
-    provider.client_id = ENV["DIGITAL_OCEAN_CLIENT_ID"]
-    provider.api_key = ENV["DIGITAL_OCEAN_API_KEY"]
+    provider.token = ENV["DIGITAL_OCEAN_TOKEN"]
     provider.ssh_key_name = "Vagrant"
 
     override.ssh.private_key_path = "~/.ssh/do_blimp_rsa"
 
-    provider.image = "Ubuntu 12.10 x64"
+    provider.image = "ubuntu-14-04-x64"
     provider.size = "512MB"
-    provider.region = "New York 2"
+    provider.region = "nyc3"
   end
 
   config.vm.define "staging" do |staging|

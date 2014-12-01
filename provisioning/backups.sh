@@ -14,11 +14,8 @@ sudo -u postgres createdb $USER
 # Install Heroku
 wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 
-# TODO: Heroku auth
-
-# Setup virtualenv
-mkvirtualenv pgbackups
+# Install requirements
 pip install pyrax
 
 # TODO: Setup cron
-~/runinenv.sh ~/.virtualenvs/pgbackups/ python ~/backups/run-backup.py
+# python ~/backups/run-backup.py

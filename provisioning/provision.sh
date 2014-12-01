@@ -18,6 +18,7 @@ wget -qO- https://raw.github.com/GetBlimp/blimp-workers/master/provisioning/redi
 wget -qO- https://raw.github.com/GetBlimp/blimp-workers/master/provisioning/python.sh | bash
 wget -qO- https://raw.github.com/GetBlimp/blimp-workers/master/provisioning/templates.sh | bash
 wget -qO- https://raw.github.com/GetBlimp/blimp-workers/master/provisioning/firewall.sh | bash -s $3 $5 $7
+wget -qO- https://raw.github.com/GetBlimp/blimp-workers/master/provisioning/backups.sh | bash
 
 # Finished provisioning log
 echo '`date +%H:%M:%S` : Finished provision.sh' >> $LOGFILE

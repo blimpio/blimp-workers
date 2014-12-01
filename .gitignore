@@ -20,3 +20,4 @@ templates/ssh/known_hosts
 templates/ssh/lift_github_rsa
 templates/ssh/lift_github_rsa.pub
 templates/blimp.env
+templates/heroku.netrc

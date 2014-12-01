@@ -16,6 +16,7 @@ You also need to copy the following ignored files into your templates folder.
 - templates/ssh/authorized_keys
 - templates/ssh/known_hosts
 - templates/blimp.env
+- templates/heroku.netrc
 
 ## Local provision
 ```
