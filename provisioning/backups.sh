@@ -7,7 +7,7 @@ set -e
 set -x
 
 # Install PostgreSQL
-sudo apt-get install postgresql
+sudo apt-get install -y postgresql
 sudo -u postgres createuser --superuser $USER
 sudo -u postgres createdb $USER
 
