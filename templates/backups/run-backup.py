@@ -13,7 +13,7 @@ env_file = '/home/ubuntu/blimp.env'
 
 
 def run():
-    print '---> Getting latest backup of {}...'.format(heroku_app_name)
+    print('---> Getting latest backup of {}...'.format(heroku_app_name))
     latest_backup_url = subprocess.check_output(
         ['heroku', 'pgbackups:url', '-a', heroku_app_name])
     file_name = os.path.basename(urlparse.urlparse(latest_backup_url).path)
@@ -27,15 +27,15 @@ def run():
     cont = cf.create_container(cont_name)
 
     try:
-        print '---> Checking if {} already exists...'.format(file_name)
+        print('---> Checking if {} already exists...'.format(file_name))
         cont.get_object(file_name)
-        print '---> {} is already backed up...'.format(file_name)
+        print('---> {} is already backed up...'.format(file_name))
     except pyrax.exceptions.NoSuchObject:
-        print '---> Downloading {}...'.format(file_name)
+        print('---> Downloading {}...'.format(file_name))
         subprocess.call(['curl', '-o', backup_path, latest_backup_url])
 
         try:
-            print '---> Verifying {}...'.format(file_name)
+            print('---> Verifying {}...'.format(file_name))
             subprocess.call([
                 'pg_restore', '--clean', '--no-acl', '--no-owner',
                 '--username', db_username,
@@ -44,18 +44,18 @@ def run():
                 backup_path
             ])
 
-            print '---> Uploading {}...'.format(file_name)
+            print('---> Uploading {}...'.format(file_name))
             cf.upload_file(cont, open(backup_path), obj_name=file_name)
 
             msg = 'Just verified and backed up {}'.format(file_name)
-            send_email('Backup success', msg)
-        except Exception, e:
+            print('---> {}...'.format(msg))
+        except Exception as e:
             send_email('Backup failed', str(e))
 
-        print '---> Deleting local backup file {}...'.format(file_name)
+        print('---> Deleting local backup file {}...'.format(file_name))
         subprocess.call(['rm', backup_path])
 
-    print '---> Done!'
+    print('---> Done!')
 
 
 def send_email(subject, error_message):
