@@ -15,7 +15,7 @@ env_file = '/home/ubuntu/blimp.env'
 def run():
     print('---> Getting latest backup of {}...'.format(heroku_app_name))
     latest_backup_url = subprocess.check_output(
-        ['heroku', 'pgbackups:url', '-a', heroku_app_name])
+        ['heroku', 'pgbackups:url', '-a', heroku_app_name]).strip()
     file_name = os.path.basename(urlparse.urlparse(latest_backup_url).path)
     backup_path = '{}/{}'.format(backups_directory, file_name)
 
